@@ -1,7 +1,10 @@
 package com.cursoJavaUdemy.projeto_web_services.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,12 +12,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Categorias")
+@Table(name = "Produtos")
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-public class Category implements Serializable {
+public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -22,13 +25,19 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String description;
+    private Double price;
+    private String imgUrl;
 
     @Getter
     @Transient
-    private Set<Product> products = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();
 
-    public Category(Long id, String name) {
+    public Product(Long id, String name, String description, Double price, String imgUrl) {
         this.id = id;
         this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
     }
 }
