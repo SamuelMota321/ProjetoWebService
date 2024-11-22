@@ -1,20 +1,18 @@
 package com.cursoJavaUdemy.projeto_web_services.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-@AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "Users")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -26,4 +24,5 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
 }
