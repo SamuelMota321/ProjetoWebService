@@ -8,6 +8,8 @@ import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Orders")
@@ -32,6 +34,9 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
 //    @JsonIgnore // com o 'JsonIgnore' do lado do pedido o comportamento será trazer com o usuário os seus pedidos
     private User client;
+
+    @OneToMany(mappedBy = "id.order")
+    private final Set<OrderItem> items = new HashSet<> ();
 
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
         this.id = id;

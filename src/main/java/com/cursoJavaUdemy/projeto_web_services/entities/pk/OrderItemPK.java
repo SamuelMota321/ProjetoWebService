@@ -2,6 +2,7 @@ package com.cursoJavaUdemy.projeto_web_services.entities.pk;
 
 import com.cursoJavaUdemy.projeto_web_services.entities.Order;
 import com.cursoJavaUdemy.projeto_web_services.entities.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -23,6 +24,7 @@ public class OrderItemPK implements Serializable {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
 
     @ManyToOne
     @JoinColumn(name = "product_id")
