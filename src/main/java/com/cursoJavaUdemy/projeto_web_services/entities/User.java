@@ -1,5 +1,6 @@
 package com.cursoJavaUdemy.projeto_web_services.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,6 +30,9 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+
+    // a notação abaixo não é obrigatória, fica apenas de exemplo para melhorar a ideia do relacionamento no banco de dados
+    @JsonIgnore // com o 'JsonIgnore' no lado do usuário o comportamento será trazer com o pedido seu usuário
     @Getter
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>(); // quando a relação for uma collection(list), ela não terá ‘setters’ e nem estará no construtor

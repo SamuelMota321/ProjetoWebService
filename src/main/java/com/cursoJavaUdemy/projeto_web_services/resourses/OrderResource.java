@@ -1,7 +1,7 @@
 package com.cursoJavaUdemy.projeto_web_services.resourses;
 
-import com.cursoJavaUdemy.projeto_web_services.entities.User;
-import com.cursoJavaUdemy.projeto_web_services.services.UserServices;
+import com.cursoJavaUdemy.projeto_web_services.entities.Order;
+import com.cursoJavaUdemy.projeto_web_services.services.OrderServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/orders")
+public class OrderResource {
 
     @Autowired
-    private UserServices services;
+    private OrderServices services;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll() {
-        List<User> list = services.findAll();
+    public ResponseEntity<List<Order>> findAll() {
+        List<Order> list = services.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id) {
-        User obj = services.findById(id);
+    public ResponseEntity<Order> findById(@PathVariable Long id) {
+        Order obj = services.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 }
