@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "Users")
 @NoArgsConstructor
 @Getter
-@Setter
+@Setter()
 @EqualsAndHashCode(of = "id")
 public class User implements Serializable {
     @Serial
@@ -33,9 +33,8 @@ public class User implements Serializable {
 
     // a notação abaixo não é obrigatória, fica apenas de exemplo para melhorar a ideia do relacionamento no banco de dados
     @JsonIgnore // com o 'JsonIgnore' no lado do usuário o comportamento será trazer com o pedido seu usuário
-    @Getter
     @OneToMany(mappedBy = "client")
-    private List<Order> orders = new ArrayList<>(); // quando a relação for uma collection(list), ela não terá ‘setters’ e nem estará no construtor
+    private final List<Order> orders = new ArrayList<>(); // quando a relação for uma collection(list), ela não terá ‘setters’ e nem estará no construtor
 
     public User(Long id, String name, String email, String phone, String password) {
         this.name = name;
