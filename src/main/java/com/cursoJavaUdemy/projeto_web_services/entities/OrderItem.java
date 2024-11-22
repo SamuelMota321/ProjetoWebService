@@ -22,7 +22,7 @@ public class OrderItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @EmbeddedId
-    private OrderItemPK id =  new OrderItemPK(); // sempre que criar uma classe auxiliar de 'id' composto ela deve ser instanciada
+    private OrderItemPK id = new OrderItemPK(); // sempre que criar uma classe auxiliar de 'id' composto ela deve ser instanciada
 
     @Getter
     @Setter
@@ -56,6 +56,10 @@ public class OrderItem implements Serializable {
 
     public void setProduct(Product product) {
         id.setProduct(product);
+    }
+
+    public Double getSubTotal() {
+        return price * quantity;
     }
 
 }
