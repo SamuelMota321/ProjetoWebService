@@ -12,12 +12,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Users")
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-@NoArgsConstructor
-@Entity
-@Table(name = "Users")
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

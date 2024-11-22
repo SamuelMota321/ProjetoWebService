@@ -9,12 +9,12 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 
+@Entity
+@Table(name = "Orders")
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-@NoArgsConstructor
-@Entity
-@Table(name = "Orders")
 public class Order implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
