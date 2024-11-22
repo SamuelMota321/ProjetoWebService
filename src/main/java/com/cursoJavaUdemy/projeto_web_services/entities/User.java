@@ -1,18 +1,22 @@
 package com.cursoJavaUdemy.projeto_web_services.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
+@NoArgsConstructor
 @Entity
 @Table(name = "Users")
-@AllArgsConstructor
-@NoArgsConstructor
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
@@ -25,4 +29,15 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
+    @Getter
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders = new ArrayList<>(); // quando a relação for uma collection(list), ela não terá ‘setters’ e nem estará no construtor
+
+    public User(Long id, String name, String email, String phone, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.id = id;
+    }
 }
